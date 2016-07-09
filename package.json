@@ -1,0 +1,77 @@
+{
+  "name": "bionode-gxa",
+  "description": "Module for EBI Gene Expression Data",
+  "version": "0.0.1",
+  "homepage": "http://bionode.io",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bionode/bionode-gxa.git"
+  },
+  "author": {
+    "name": "Bruno Vieira",
+    "email": "mail@bmpvieira.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "JSONStream": "^1.1.2",
+    "request": "^2.73.0",
+    "split2": "^2.1.0",
+    "through2": "^2.0.1",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "browserify": "^5.11.0",
+    "contributor": "^0.1.16",
+    "coveralls": "~2.6.1",
+    "docco": "~0.6.2",
+    "istanbul": "~0.2.4",
+    "tap-spec": "^0.2.1",
+    "tape": "^2.14.0",
+    "testling": "^1.7.0",
+    "uglify-js": "^2.4.15"
+  },
+  "keywords": [
+    "bioinformatics",
+    "genomics",
+    "genetics",
+    "dna",
+    "util",
+    "server",
+    "client",
+    "browser"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/bionode-gxa.js | tap-spec",
+    "test-browser": "browserify test/bionode-gxa.js | testling | tap-spec",
+    "coverage": "istanbul cover test/bionode-gxa.js --report lcovonly -- | tap-spec && rm -rf ./coverage",
+    "coveralls": "istanbul cover test/bionode-gxa.js --report lcovonly -- | tap-spec && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf ./coverage",
+    "build-browser": "browserify index.js -r ./index.js:bionode-gxa | uglifyjs > bionode-gxa.min.js",
+    "build-docs": "docco ./lib/bionode-gxa.js"
+  },
+  "testling": {
+    "files": "test/bionode-gxa.js",
+    "browsers": [
+      "ie/8..latest",
+      "firefox/17..latest",
+      "firefox/nightly",
+      "chrome/22..latest",
+      "chrome/canary",
+      "opera/12..latest",
+      "opera/next",
+      "safari/5.1..latest",
+      "ipad/6.0..latest",
+      "iphone/6.0..latest",
+      "android-browser/4.2..latest"
+    ]
+  },
+  "contributors": [
+    {
+      "name": "Bruno Vieira",
+      "email": "mail@bmpvieira.com",
+      "url": "https://github.com/bmpvieira",
+      "contributions": 15,
+      "hireable": false
+    }
+  ]
+}
